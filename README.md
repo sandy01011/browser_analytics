@@ -3,7 +3,7 @@ Analysing Browsing pattern can reveal many insights, our aim is to get a pattern
 
 ## Data Collection
 
-### Chrome Browser Collection Path
+## Chrome Browser Collection Path
 
 Location of Google Chrome history
 
