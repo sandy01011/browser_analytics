@@ -23,39 +23,39 @@ Linux/Unix
 /home/<username>/.config/google-chrome/Default
 /home/<username>/.cache/google-chrome/Default/Cache
 
-###Format of Google Chrome history
+## Format of Google Chrome history
 
-###Bookmarks
+## Bookmarks
 Chrome Bookmarks are stored in the 'Bookmarks' JSON file.
 
-###Cache
+## Cache
 Chrome Cache is stored using an Index file ('index'), a number of Data Block files ('data_#'), and a number of separate data files ('f_######').
 
-###Cookies
+## Cookies
 Chrome Cookies are stored in the 'Cookies' SQLite database, within the 'cookies' table.
 
-###Downloads
+## Downloads
 Chrome Downloads are stored in the 'History' SQLite database, within the 'downloads' and 'downloads_url_chains' tables.
 
-###Favicons
+## Favicons
 Chrome Favicons are stored in the 'Favicons' SQLite database, within the 'favicons', 'favicon_bitmaps' and 'icon_mapping' tables. Older versions of Chrome stored Favicons in a 'Thumbnails' SQLite database, within the 'favicons' table.
 
-###Form History
+## Form History
 Chrome Form History is stored in the 'Web Data' SQLite database, within the 'autofill' table. Older versions of Chrome stored associated dates within an 'autofill_dates' table.
 
-###Logins
+## Logins
 Chrome Logins are stored in the 'Login Data' SQLite database, within the 'logins' table. Older versions of Chrome stored Logins in the 'Web Data' SQLite database.
 
-###Searches
+## Searches
 Chrome Searches are stored in the 'History' SQLite database, within the 'keyword_search_terms' table. Associated URL information is stored within the 'urls' table.
 
-###Session Data
+## Session Data
 Chrome Session Data is stored in the 'Current Session', 'Current Tabs', 'Last Session' and 'Last Tabs' files.
 
-###Thumbnails
+## Thumbnails
 Chrome Thumbnails are stored in the 'Top Sites' SQLite database, within the 'thumbnails' table. Older versions of Chrome stored Thumbnails in a 'Thumbnails' SQLite database, within the 'thumbnails' table.
 
-###Website Visits
+## Website Visits
 Chrome Website Visits are stored in the 'History' SQLite database, within the 'visits' table. Associated URL information is stored within the 'urls' table. Older versions of Chrome stored archived Website Visits in a separate 'Archived History' SQLite database, within the 'visits' table.
 
 ## ETL
