@@ -2,20 +2,19 @@ import gridfs
 import pymongo
 import json
 import sys
-from app_meta import meta
+from app_env import read_env
 
-
-metadata= meta()
-db = metadata[3]
-db_collection = metadata[4]
+metadata = json.loads(read_env())
+db = metadata['db']['collectiondb']
+db_collection = metadata['db']['collection']
 
 class MongoDB(object):
-    metadata = meta()
-    username = metadata[0]
-    password = metadata[1]
-    URI = metadata[2]
-    db = metadata[3]
-    db_collection = metadata[4]
+    metadata = json.loads(read_env())
+    username = metadata['db']['dbuser']
+    password = metadata['db']['dbpassword']
+    URI = metadata['db']['uri']
+    db = metadata['db']['collectiondb']
+    db_collection = metadata['db']['collection']
     DATABASE = None
 
 
