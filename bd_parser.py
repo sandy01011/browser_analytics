@@ -52,7 +52,10 @@ class BdParser(object):
                 h1.close()
                 l1.close()
                 browsing_data = {'bid': bid, 'load_time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'data': {'search': json.loads(df_h1_search.T.to_json()),'history': json.loads(df_h1.T.to_json()),'login': json.loads(df_l1.T.to_json()), 'downloads': json.loads(df_h1_downloads.T.to_json())}}
-                load_browser_data('collection',browsing_data)
+                try:
+                    load_browser_data('collection',browsing_data)
+                except error as e:
+                    print(e)
                 #print(browsing_data)
 
         else:

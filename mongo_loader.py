@@ -16,6 +16,7 @@ class MongoDB(object):
     db = metadata['db']['collectiondb']
     db_collection = metadata['db']['collection']
     DATABASE = None
+    print(username, password, URI, db, db_collection)
 
 
     @staticmethod
