@@ -6,18 +6,22 @@ user = 'sandeep'
 browser_id = ['sk2011mishra@gmail.com'] # browser node id
 
 data_path = [['/home/sandeep/anaconda3/envs/vconSanAI/jupyter_lab/github_sandy01011/browser_analytics/raw_data/sandeep/bluemoon','/home/sandeep/anaconda3/envs/vconSanAI/jupyter_lab/github_sandy01011/browser_analytics/raw_data/sandeep/phone','/home/sandeep/anaconda3/envs/vconSanAI/jupyter_lab/github_sandy01011/browser_analytics/raw_data/sandeep/stl_ubuntu']]
-profile = ['Profile1','Profile2','Profile3']
+# profiles
+bluemoon_profile = []
+phone_profile = []
+stl_profile = ['Profile1','Profile3','Profile4']
 history = 'History'
 login = 'Login Data'
 hist_list = []
 login_list = []
-
-for profile_curr in profile:
+# build path list for bluemoon and phone
+for profile_curr in stl_profile:
     hist_list.append(data_path[0][2] + '/' + profile_curr + '/' + history)
     login_list.append(data_path[0][2] + '/' + profile_curr + '/' + login)
    # print(data_path[0][2])
    # print(profile)
    # print(history)
+
 path_list = [hist_list, login_list]
 
     
