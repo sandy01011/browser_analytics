@@ -23,11 +23,12 @@ class BdParser(object):
         pass
 
 
-    def pre_parser(self, history, login):
+    def pre_parser(self, history, login, browser_id):
         if len(history) > 0 and len(login) > 0:
             for bid in range(len(history)):
                 history1 = sqlite3.connect(history[bid])
                 login1= sqlite3.connect(login[bid])
+                brow_id = browser_id[bid]
                 h1 = history1.cursor()
                 l1 = login1.cursor()
                 h1.execute("SELECT urls.id id, urls.url url, urls.title title, urls.visit_count visit_count, urls.typed_count typed_count, urls.last_visit_time last_visit_time, urls.hidden hidden, visits.visit_time visit_time, visits.from_visit from_visit, visits.visit_duration visit_duration, visits.transition transition, visit_source.source source FROM urls JOIN visits ON urls.id = visits.url LEFT JOIN visit_source ON visits.id = visit_source.id")
@@ -51,7 +52,7 @@ class BdParser(object):
                 df_l1['last_used'] = df_l1['last_used'].apply(lambda x: (datetime.datetime(1601, 1, 1) + datetime.timedelta(microseconds=x)).strftime('%Y-%m-%d %H:%M:%S'))
                 h1.close()
                 l1.close()
-                browsing_data = {'bid': bid, 'load_time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'data': {'search': json.loads(df_h1_search.T.to_json()),'history': json.loads(df_h1.T.to_json()),'login': json.loads(df_l1.T.to_json()), 'downloads': json.loads(df_h1_downloads.T.to_json())}}
+                browsing_data = {'bid': brow_id, 'load_time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'data': {'search': json.loads(df_h1_search.T.to_json()),'history': json.loads(df_h1.T.to_json()),'login': json.loads(df_l1.T.to_json()), 'downloads': json.loads(df_h1_downloads.T.to_json())}}
                 try:
                     load_browser_data('collection',browsing_data)
                 except error as e:

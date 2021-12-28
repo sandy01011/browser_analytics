@@ -13,7 +13,10 @@ bd_env = json.loads(read_env())
 # call pre-parser to get json
 #print(len(bd_env['user']['data_path'][1]))
 bdparser = BdParser()
-bdparser.pre_parser(bd_env['user']['data_path'][0], bd_env['user']['data_path'][1])
+history_list = bd_env['user']['data_path'][0]
+login_list = bd_env['user']['data_path'][1]
+browser_id_list = bd_env['user']['data_path'][2]
+bdparser.pre_parser(history_list, login_list, browser_id_list)
 # enrich json
 
 # create json file
