@@ -42,6 +42,14 @@ class MongoDB(object):
     def insertmany(collection, data):
         MongoDB.DATABASE[collection].insert(data)
 
+    @staticmethod
+    def gfs(collection, data):
+        try:
+            return gridfs.GridFS(MongoDB.DATABASE[collection].put(data))
+        except Exception as e:
+             print("An exception occurred ::", e)
+
+
 
 
 def load_browser_data(mondb,data):

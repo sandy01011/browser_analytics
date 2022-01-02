@@ -6,7 +6,7 @@ import datetime
 
 
 bid = 'sk2011mishra@gmail.com'
-with open("chrome_exported_browserhistory.json") as f:
+with open("BrowserHistory20211218.json") as f:
     data = json.loads(f.read())
     df_h1 = pd.DataFrame(data["Browser History"])
     df_h1 = df_h1.rename(columns={"time_usec": "last_visit_time", "page_transition": "transition", "client_id": "id"})
@@ -29,5 +29,13 @@ data_l1 = [{'username': 'sandy01011', 'element': 'login', 'origin': 'https://git
 df_l1 = pd.DataFrame(data_l1)
 #print(df_l1.head(5))
 browsing_data = {'bid': bid,'load_time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'data': {'history': json.loads(df_h1.T.to_json()), 'login': json.loads(df_l1.T.to_json())}}
-load_browser_data('collection',browsing_data)
+
+filename = 'EnrichedBrowserHistory20211218.json'
+with open(filename, 'a') as file:
+    #print(sys_stats)
+    data = browsing_data
+    json.dump(data, file, default=str)
+    file.close()
+
+#load_browser_data('collection',browsing_data)
 
