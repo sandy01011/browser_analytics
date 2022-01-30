@@ -23,6 +23,9 @@ Linux/Unix
 /home/<username>/.config/google-chrome/Default
 /home/<username>/.cache/google-chrome/Default/Cache
 
+Note: There can be multiple browsing profiles running with single instance of chrome which makes it hard to map profile an easy way
+to solve this issue to check 'chrome://version' from the browser address bar which will give the profile location and name.
+
 ## Format of Google Chrome history
 
 ## Bookmarks

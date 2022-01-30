@@ -6,5 +6,6 @@ BrowserHistory20211218.json
 EnrichedBrowserHistory20210415.json
 EnrichedBrowserHistory20211218.json
 *.json
+baake_env.py
 app_env.py
 *app_env*
