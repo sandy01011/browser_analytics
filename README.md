@@ -66,5 +66,7 @@ Chrome Website Visits are stored in the 'History' SQLite database, within the 'v
 RAW DATA---------> Extract -----> Transform -------> Load
 
 ## Data modeling
+1- URL Classification 
+2- Content Classification
 
 ## Insights
