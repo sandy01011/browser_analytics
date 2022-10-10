@@ -1,5 +1,6 @@
 1/
 2/
+webData/
 oldversion1data
 raw_data
 app_meta.py
@@ -12,3 +13,5 @@ baake_env.py
 app_env.py
 *app_env*
 .vscode
+__pycache__/
+.ipynb_checkpoints
