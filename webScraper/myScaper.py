@@ -10,11 +10,12 @@ from tabula import read_pdf
 from tabulate import tabulate
 import socket
 import logging
+import os
 
 from datetime import datetime
 timestamp = datetime.now().strftime("%Y%m%d%H%M")
-log_path = 'logs/'
-log_file = 'logs/' + 'ongoingbids_bid_col' + '_' + timestamp + '.log'
+log_path = os.getcwd() + os.mkdir('logs/')
+log_file = 'logs/' + 'default' + '_' + timestamp + '.log'
 soup_error_file = log_path + 'ongoingbids_soup_error' + timestamp
 #logging.basicConfig(level=logging.DEBUG)
 logging.basicConfig(filename=log_file, filemode='w', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
