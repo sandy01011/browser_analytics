@@ -11,6 +11,7 @@ from tabulate import tabulate
 import socket
 import logging
 import os
+import requests 
 
 from datetime import datetime
 timestamp = datetime.now().strftime("%Y%m%d%H%M")
