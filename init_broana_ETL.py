@@ -1,7 +1,7 @@
 # start browser data collection
 import json
 from bd_parser import BdParser
-from baake_env import read_env
+from broana_env import read_env
 
 # load environement and logger
 baake_env = json.loads(read_env())
