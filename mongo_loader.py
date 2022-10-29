@@ -2,7 +2,7 @@ import gridfs
 import pymongo
 import json
 import sys
-from app_env import read_env
+from bran_env import read_env
 
 metadata = json.loads(read_env())
 db = metadata['db']['collectiondb']
@@ -25,15 +25,12 @@ class MongoDB(object):
             client = pymongo.MongoClient(MongoDB.URI)
             MongoDB.DATABASE = client[MongoDB.db]
             MongoDB.DATABASE.authenticate(MongoDB.username, MongoDB.password)
-            #print('db initialized')
         except Exception:
             print("Fatal error in main loop")
 
     @staticmethod
     def insert(collection, data):
         try:
-            #for k,v in data.items():
-            #    print(k, v)
             MongoDB.DATABASE[collection].insert(data, check_keys=False)
         except Exception as e:
              print("An exception occurred ::", e)
@@ -54,7 +51,6 @@ class MongoDB(object):
 
 def load_browser_data(mondb,data):
     MongoDB.initialize(db)
-    #print('current db is {} collection is {}'.format(db, db_collection))
     try:
         MongoDB.insert(collection=db_collection,data=data)
     except Exception:
