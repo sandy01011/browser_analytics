@@ -8,7 +8,7 @@ pieces of grain husk separated from flour after milling.
 # 
 
 Analysing Browsing pattern can reveal many insights, aim is to analyse information generated through browsers and to understand information clusters associated to a particular user id.
-This repository helps to collect user browser data with objective to provide more insights about the user and data consumed by the user.
+This repository helps to collect user browser data with objective to provide more insights about the user's and data consumed by the user.
 
 
 ## Data Collection
