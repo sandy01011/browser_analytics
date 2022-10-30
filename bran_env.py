@@ -11,7 +11,7 @@ user_init = {'user':user, 'data':[history, login, browser_id]}
 # mongo db data
 db_user = 'whiteeye'
 db_password = 'F0cus@p0int'
-URI = "mongodb://127.0.0.1:8017"
+URI = "mongodb://aumnix.com:5017"
 collectiondb = 'bran'
 collection = 'branCollector'
 
