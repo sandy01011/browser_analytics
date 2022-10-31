@@ -1,6 +1,6 @@
 # start browser data collection
 import json
-from bd_parser import BdParser
+from bd_pre_parser import BdParser
 from bran_env import read_env
 
 # load environement and logger
