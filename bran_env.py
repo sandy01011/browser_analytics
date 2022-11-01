@@ -5,13 +5,16 @@ import json
 user = 'sandeep' # get user name from form input
  # browser node id static manual mapping with profile index based list map
 browser_id = ['sk2011mishra@gmail.com']
+
 # take user choice for data source
-data_source = ['google_export_folder', 'google_chrome_folder']
+data_source = ['google_export_folder', 'google_chrome_folder'] # ge and gc
+
 # get data path from user form input
-data_path = '/home/sandeep/anaconda3/envs/vconSanAI/jupyter_lab/github_sandy01011/browser_analytics/raw_data/sandeep/bluemoon/bluemoon-sk2011mishra-gmail_com_n-1/'
-history = [data_path + 'History']
-login = [data_path + 'Login Data']
-user_init = {'user':user, 'data':[history, login, browser_id]}
+ge_data_path = '/home/sandeep/anaconda3/envs/vconSanAI/jupyter_lab/github_sandy01011/browser_analytics/raw_data/sandeep/bluemoon/bluemoon-sk2011mishra-gmail_com_n-1/'
+ge_history = [ge_data_path + 'History']
+ge_login = [ge_data_path + 'Login Data']
+user_init = {'user':user, 'data':{'ge':[ge_history, ge_login, browser_id],'gc':[gc_history, gc_login, browser_id]}}
+
 # mongo db data
 db_user = 'whiteeye'
 db_password = 'F0cus@p0int'

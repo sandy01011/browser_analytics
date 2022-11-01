@@ -6,6 +6,9 @@ from bran_env import read_env
 # load environement and logger
 bran_env = json.loads(read_env())
 
+# check collectors allocated to bran
+print(bran_env[''])
+
 # call pre-parser to get json
 bdparser = BdParser()
 history_list = bran_env['user']['data'][0]
