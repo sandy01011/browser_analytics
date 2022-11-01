@@ -17,5 +17,5 @@ bdparser.pre_parser(history_list, login_list, browser_id_list)
 # create json file
 
 # load to mongo db
-
+# archive data
 
