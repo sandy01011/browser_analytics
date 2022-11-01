@@ -13,7 +13,7 @@ login = metadata[7]   # load login data
 if len(bids) > 0 and len(history) > 0 and len(login) > 0:
     for bid in bids:
         history1 = sqlite3.connect(history[0])
-        login1= sqlite3.connect(login[0])
+        login1 = sqlite3.connect(login[0])
         h1 = history1.cursor()
         l1 = login1.cursor()
         h1.execute("SELECT urls.id id, urls.url url, urls.title title, urls.visit_count visit_count, urls.typed_count typed_count, urls.last_visit_time last_visit_time, urls.hidden hidden, visits.visit_time visit_time, visits.from_visit from_visit, visits.visit_duration visit_duration, visits.transition transition, visit_source.source source FROM urls JOIN visits ON urls.id = visits.url LEFT JOIN visit_source ON visits.id = visit_source.id")
