@@ -1,12 +1,26 @@
+# This file will hold google chrome (gc) history collection from the given path of the machine.
+
 import sqlite3
 import json
 from pandas import DataFrame
 from bran_env import read_env
 from mongo_loader import load_browser_data
 import datetime
+from applogger import BotLog
 
+metadata = read_env()
+print(metadata)
+'''
+logger = BotLog.
 # read agent metadata
-metadata= read_env()
+#metadata= read_env()
+class GoogleChromeCollector:
+
+     def __init__(self, client_id, agent_id):
+        self.client_id = client_id
+        self.agent_id = agent_id
+        logger.info('CamFileAgent Class should be automated')
+    pass
 bids = metadata[5]  # load browsing id's
 history = metadata[6] # load history data
 login = metadata[7]   # load login data
@@ -79,3 +93,4 @@ browsing_data = {'bid': bid, 'load_time': datetime.datetime.now().strftime('%Y-%
                            'login': json.loads(df_l1.T.to_json()), 'downloads': json.loads(df_h1_downloads.T.to_json())}}
 load_browser_data('collection',browsing_data)
 """
+'''
