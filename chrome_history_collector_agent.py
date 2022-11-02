@@ -12,9 +12,14 @@ metadata = json.loads(read_env())
 print(metadata['logger'])
 logger = BotLog(metadata['logger']['logfile'], metadata['logger']['loggername'], metadata['logger']['loghandler']).get_logger()
 logger.info('bran env loaded')
-print(logger)
-class GoogleChromeCollector:
+
+class BranCollector:
+    def __init__(self):
+        pass
     pass
+
+    def chromefile(bid, path, freq):
+        
 
 bids = metadata[5]  # load browsing id's
 history = metadata[6] # load history data
