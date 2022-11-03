@@ -1,19 +1,38 @@
 #environment file
 import json
+import os
+import subprocess
+
 
 #user data
 
 default_user = 'bran'
-#user = input('Enter user name: ') or default_user
+user = input('Enter user name: ') or default_user
 user = 'sandeep'
-browser_id = [] # browser node id static manual mapping with profile index based list map
-default_profile = 'default'
-default_path = ''
-default_email = 'bran@dummy.com'
+default_profile = 'Default'
+default_data_path = '~/.config/google-chrome/'
+default_brid = 'bran@dummy.com'
+brid = input('Enter browsing id: ') or default_brid
 
-#data_path = [['/home/sandeep/anaconda3/envs/vconSanAI/jupyter_lab/github_sandy01011/browser_analytics/raw_data/sandeep/bluemoon','/home/sandeep/anaconda3/envs/vconSanAI/jupyter_lab/github_sandy01011/browser_analytics/raw_data/sandeep/phone','/home/sandeep/anaconda3/envs/vconSanAI/jupyter_lab/github_sandy01011/browser_analytics/raw_data/sandeep/stl_ubuntu']]
-#data_path = [['/home/sandeep/anaconda3/envs/vconSanAI/jupyter_lab/github_sandy01011/browser_analytics/raw_data/sandeep/bluemoon','/home/sandeep/anaconda3/envs/vconSanAI/jupyter_lab/github_sandy01011/browser_analytics/raw_data/sandeep/phone','/home/sandeep/anaconda3/envs/vconSanAI/jupyter_lab/github_sandy01011/browser_analytics/raw_data/sandeep/stl_ubuntu']]
 # profiles
+check_profile = input('Do you want to load all profiles(Y/N): ') or 'Y'
+if check_profile == 'Y':
+    profiles_x = subprocess.check_output("find ~/.config/google-chrome/ -name 'Profile*'", shell=True)
+    profiles = []
+    profiles_y = profiles_x.decode().splitlines()
+    for profile in profiles_y:
+        profiles.append(profile)
+    if os.path.exists(default_data_path + default_profile):
+        profiles.insert(0, default_data_path + default_profile)
+    else:
+        pass
+    #profiles = profiles_y.insert(1,default_data_path + default_profile)
+    print(profiles)
+else:
+    profiles = [default_profile]
+    
+
+"""
 bluemoon_profile = []
 
 phone_profile = []
@@ -60,3 +79,4 @@ app_init = {'user':user_init, 'db':db_init, 'logger':log_init}
 def read_env():
     print('loading meta')
     return json.dumps(app_init)
+"""
