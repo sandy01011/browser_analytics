@@ -3,7 +3,7 @@
 import sqlite3
 import json
 from pandas import DataFrame
-from bran_env import read_env
+from bran_meta import read_env
 from mongo_loader import load_browser_data
 import datetime
 from applogger import BotLog

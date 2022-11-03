@@ -2,7 +2,7 @@
 import pymongo
 import json
 import sys
-from bran_env import read_env
+from bran_meta import read_env
 
 metadata = json.loads(read_env())
 db = metadata['db']['collectiondb']
