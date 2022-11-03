@@ -17,6 +17,8 @@ bran_env.py
 bran_env_new.py
 bran_env1.py
 bran_env_new1.py
+bran_meta.py
+bran_meta_new.py
 *app_env*
 .vscode
 __pycache__/
