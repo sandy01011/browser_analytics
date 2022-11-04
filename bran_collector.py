@@ -9,6 +9,7 @@ import datetime
 from applogger import BotLog
 
 metadata = json.loads(read_env())
+print(metadata)
 print(metadata['logger'])
 logger = BotLog(metadata['logger']['logfile'], metadata['logger']['loggername'], metadata['logger']['loghandler']).get_logger()
 logger.info('bran env loaded')
@@ -18,7 +19,7 @@ class BranCollector:
         pass
     pass
 
-    def chromefile(uid, path, freq):
+    def chrome_file(uid, path, freq):
         bids = metadata[5]  # load browsing id's
         history = metadata[6] # load history data
         login = metadata[7]   # load login data
@@ -56,7 +57,8 @@ class BranCollector:
         else:
             print("meta data issue")
     
-    def chromeexport
+    def chrome_export():
+        pass
 
 
 """
