@@ -16,6 +16,8 @@ logger.info('bran env loaded')
 
 class BranCollector:
     def __init__(self):
+        self.user = metadata['user']['user']
+        print(self.user)
         pass
     pass
 
