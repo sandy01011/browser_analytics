@@ -1,24 +1,27 @@
 # start browser data collection
 import json
-from bd_pre_parser import BdParser
-from bran_meta import read_env
+import bran_collector as bc
 
-# load environement and logger
-bran_env = json.loads(read_env())
+bc.BranCollector()
+# from bd_pre_parser import BdParser
+# from bran_meta import read_env
 
-# check collectors allocated to bran
-print(bran_env[''])
+# # load environement and logger
+# bran_env = json.loads(read_env())
 
-# call pre-parser to get json
-bdparser = BdParser()
-history_list = bran_env['user']['data'][0]
-login_list = bran_env['user']['data'][1]
-browser_id_list = bran_env['user']['data'][2]
-bdparser.pre_parser(history_list, login_list, browser_id_list)
-# enrich json
+# # check collectors allocated to bran
+# print(bran_env[''])
 
-# create json file
+# # call pre-parser to get json
+# bdparser = BdParser()
+# history_list = bran_env['user']['data'][0]
+# login_list = bran_env['user']['data'][1]
+# browser_id_list = bran_env['user']['data'][2]
+# bdparser.pre_parser(history_list, login_list, browser_id_list)
+# # enrich json
 
-# load to mongo db
-# archive data
+# # create json file
+
+# # load to mongo db
+# # archive data
 

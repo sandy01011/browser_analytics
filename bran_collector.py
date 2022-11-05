@@ -26,17 +26,23 @@ class BranCollector:
         self.gc_ops_path = metadata['user']['data']['gc']['ops_path']
         self.gc_arc_path = metadata['user']['data']['gc']['arc_path']
         self.gc_profiles = metadata['user']['data']['gc']['profiles']
-        self.gc_data = metadata['user']['data']['gc']['gc_data']
+        self.gc_data_hist = metadata['user']['data']['gc']['gc_data'][0]
+        self.gc_data_login = metadata['user']['data']['gc']['gc_data'][1]
+        self.history = ''
+        self.login = ''
+    
 
         
-        print(self.user, self.db_user, self.db_pass, self.db_uri, self.gc_data)
+        print(self.user, self.db_user, self.db_pass, self.db_uri, self.gc_profiles,self.gc_data_hist)
         
-
-    def chrome_file(uid, path, freq):
-        bids = metadata[5]  # load browsing id's
-        history = metadata[6] # load history data
-        login = metadata[7]   # load login data
-        if len(bids) > 0 and len(history) > 0 and len(login) > 0: # for multiple profiles
+"""
+    def chrome_file(self):
+        os.chdir(os.path.expanduser("~"))
+        #bids = metadata[5]  # load browsing id's
+        #history = metadata[6] # load history data
+        #login = metadata[7]   # load login data
+        #if len(self.users) > 0 and len(history) > 0 and len(login) > 0: # for multiple profiles
+        if len(self.user) > 0:
             for bid in bids:
                 history1 = sqlite3.connect(history[0])
                 login1 = sqlite3.connect(login[0])
@@ -74,7 +80,7 @@ class BranCollector:
         pass
 
 
-"""
+
 history1 = sqlite3.connect('/home/sandeep/snap/chromium/common/chromium/Profile 4/History')
 login1= sqlite3.connect('/home/sandeep/snap/chromium/common/chromium/Profile 4/Login Data')
 h1 = history1.cursor()
