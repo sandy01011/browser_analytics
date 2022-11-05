@@ -1,4 +1,5 @@
-# This file will hold google chrome (gc) history collection from the given path of the machine.
+# This file will collect data from google chrome live file,gc and from google export
+# This file will load data to mongodb and will create a file on disk
 
 import sqlite3
 import json
@@ -9,17 +10,27 @@ import datetime
 from applogger import BotLog
 
 metadata = json.loads(read_env())
-print(metadata)
-print(metadata['logger'])
 logger = BotLog(metadata['logger']['logfile'], metadata['logger']['loggername'], metadata['logger']['loghandler']).get_logger()
 logger.info('bran env loaded')
 
 class BranCollector:
     def __init__(self):
         self.user = metadata['user']['user']
-        print(self.user)
-        pass
-    pass
+        self.db_user = metadata['db']['dbuser']
+        self.db_pass = metadata['db']['dbpassword']
+        self.db_uri = metadata['db']['uri']
+        self.db_collectiondb = metadata['db']['collectiondb']
+        self.db_collection = metadata['db']['collection']
+        self.ge_ops_path = metadata['user']['data']['ge']['ops_path']
+        self.ge_arc_path = metadata['user']['data']['ge']['arc_path']
+        self.gc_ops_path = metadata['user']['data']['gc']['ops_path']
+        self.gc_arc_path = metadata['user']['data']['gc']['arc_path']
+        self.gc_profiles = metadata['user']['data']['gc']['profiles']
+        self.gc_data = metadata['user']['data']['gc']['gc_data']
+
+        
+        print(self.user, self.db_user, self.db_pass, self.db_uri, self.gc_data)
+        
 
     def chrome_file(uid, path, freq):
         bids = metadata[5]  # load browsing id's
