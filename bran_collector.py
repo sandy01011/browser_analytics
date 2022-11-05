@@ -30,11 +30,7 @@ class BranCollector:
         self.gc_data_login = metadata['user']['data']['gc']['gc_data'][1]
         self.history = ''
         self.login = ''
-    
-
-        
-        print(self.user, self.db_user, self.db_pass, self.db_uri, self.gc_profiles,self.gc_data_hist)
-        
+  
 """
     def chrome_file(self):
         os.chdir(os.path.expanduser("~"))
