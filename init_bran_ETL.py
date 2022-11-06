@@ -3,7 +3,7 @@ import json
 from bran_collector import BranCollector as bc
 #import bran_collector as bc
 
-bc.chrome_file()
+bc.chrome_file
 # from bd_pre_parser import BdParser
 # from bran_meta import read_env
 
