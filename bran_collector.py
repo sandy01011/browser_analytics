@@ -40,8 +40,8 @@ class BranCollector:
         self.login = ''
         self.logger.info('bran env loaded')
 
-    def copy_file(self, file):
-        shutil.copy(file, self.gc_ops_path)
+    def copy_file(self, src_file, dst_file):
+        shutil.copy(src_file, dst_file)
   
     def chrome_file(self):
         os.chdir(os.path.expanduser("~"))
@@ -49,10 +49,11 @@ class BranCollector:
         print('Inside chrome_file')
         #cam_files = [cam_file for cam_file in os.listdir(data_source_path)]
         for profile in self.gc_profiles:
-            copy_file(profile + '/' + self.gc_data_hist)
-            print(profile)
-            print(profile + '/' + self.gc_data_hist)
-            print(self.gc_ops_path)
+            src_file_path = profile + '/' + self.gc_data_hist
+            dst_file_path = self.gc_ops_path + '/' + self.gc_data_hist+datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+            shutil.copy(src_file_path,dst_file_path)
+                                    
         # history1 = sqlite3.connect(history[0])
         # login1 = sqlite3.connect(login[0])
         # h1 = history1.cursor()
