@@ -4,37 +4,41 @@
 import sqlite3
 import json
 from pandas import DataFrame
-from bran_meta import read_env
+
 from mongo_loader import load_browser_data
 import datetime
 from applogger import BotLog
 import pandas as pd
 
 
-metadata = json.loads(read_env())
-logger = BotLog(metadata['logger']['logfile'], metadata['logger']['loggername'], metadata['logger']['loghandler']).get_logger()
-logger.info('bran env loaded')
 
 class BranCollector:
-    def __init__(self):
-        self.user = metadata['user']['user']
-        self.db_user = metadata['db']['dbuser']
-        self.db_pass = metadata['db']['dbpassword']
-        self.db_uri = metadata['db']['uri']
-        self.db_collectiondb = metadata['db']['collectiondb']
-        self.db_collection = metadata['db']['collection']
-        self.ge_ops_path = metadata['user']['data']['ge']['ops_path']
-        self.ge_arc_path = metadata['user']['data']['ge']['arc_path']
-        self.gc_ops_path = metadata['user']['data']['gc']['ops_path']
-        self.gc_arc_path = metadata['user']['data']['gc']['arc_path']
-        self.gc_profiles = metadata['user']['data']['gc']['profiles']
-        self.gc_data_hist = metadata['user']['data']['gc']['gc_data'][0]
-        self.gc_data_login = metadata['user']['data']['gc']['gc_data'][1]
+    def __init__(self, metadata):
+        print('inside init')
+        self.metadata = metadata
+        self.user = self.metadata['user']['user']
+        self.db_user = self.metadata['db']['dbuser']
+        self.db_pass = self.metadata['db']['dbpassword']
+        self.db_uri = self.metadata['db']['uri']
+        self.db_collectiondb = self.metadata['db']['collectiondb']
+        self.db_collection = self.metadata['db']['collection']
+        self.ge_ops_path = self.metadata['user']['data']['ge']['ops_path']
+        self.ge_arc_path = self.metadata['user']['data']['ge']['arc_path']
+        self.gc_ops_path = self.metadata['user']['data']['gc']['ops_path']
+        self.gc_arc_path = self.metadata['user']['data']['gc']['arc_path']
+        self.gc_profiles = self.metadata['user']['data']['gc']['profiles']
+        self.gc_data_hist = self.metadata['user']['data']['gc']['gc_data'][0]
+        self.gc_data_login = self.metadata['user']['data']['gc']['gc_data'][1]
         self.history = ''
         self.login = ''
   
     def chrome_file(self):
-        for profile in self.profiles:
+        print('Inside chrome_file')
+        metadata = self.metadata
+        logger = BotLog(metadata['logger']['logfile'], metadata['logger']['loggername'], metadata['logger']['loghandler']).get_logger()
+        logger.info('bran env loaded')
+        print('printing self.profiles', self.gc_profiles)
+        for profile in self.gc_profiles:
             print(profile)
         # history1 = sqlite3.connect(history[0])
         # login1 = sqlite3.connect(login[0])
