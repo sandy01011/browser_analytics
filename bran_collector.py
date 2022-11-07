@@ -1,6 +1,7 @@
 # This file will collect data from google chrome live file,gc and from google export
 # This file will load data to mongodb and will create a file on disk
 
+import os
 import sqlite3
 import json
 from pandas import DataFrame
@@ -13,6 +14,7 @@ import pandas as pd
 
 
 class BranCollector:
+    
     def __init__(self, metadata):
         print('inside init')
         self.metadata = metadata
@@ -29,17 +31,27 @@ class BranCollector:
         self.gc_profiles = self.metadata['user']['data']['gc']['profiles']
         self.gc_data_hist = self.metadata['user']['data']['gc']['gc_data'][0]
         self.gc_data_login = self.metadata['user']['data']['gc']['gc_data'][1]
+        self.logger_name = self.metadata['logger']['loggername']
+        self.logger_handler = self.metadata['logger']['loghandler']
+        self.logger_file = self.metadata['logger']['logfile']
+        self.logger = BotLog(self.logger_file, self.logger_name, self.logger_handler).get_logger()
         self.history = ''
         self.login = ''
+        self.logger.info('bran env loaded')
+
+    def copy_file(file, ops_path):
+        pass
   
     def chrome_file(self):
+        os.chdir(os.path.expanduser("~"))
+        home_path = os.getcwd()
         print('Inside chrome_file')
-        metadata = self.metadata
-        logger = BotLog(metadata['logger']['logfile'], metadata['logger']['loggername'], metadata['logger']['loghandler']).get_logger()
-        logger.info('bran env loaded')
-        print('printing self.profiles', self.gc_profiles)
+        #cam_files = [cam_file for cam_file in os.listdir(data_source_path)]
         for profile in self.gc_profiles:
+            #copy_file(home_path + profile + '/' + )
             print(profile)
+            print(profile + '/' + self.gc_data_hist)
+            print(self.gc_ops_path)
         # history1 = sqlite3.connect(history[0])
         # login1 = sqlite3.connect(login[0])
         # h1 = history1.cursor()
@@ -92,7 +104,7 @@ class BranCollector:
         {'username': 'bobbyojha333@gmail.com', 'element': 'email', 'origin': 'https://www.amazon.com/ap/signin', 'action': 'https://www.amazon.com/ap/signin', 'created_on': '2021-06-04 17:45:31', 'last_used': '2021-06-04 17:45:16'}]
         df_l1 = pd.DataFrame(data_l1)
         #print(df_l1.head(5))
-        browsing_data = {'bid': bid,'load_time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'data': {'history': json.loads(df_h1.T.to_json()), 'login': json.loads(df_l1.T.to_json())}}
+        browsing_data = {'uid': self.user,'load_time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'data': {'history': json.loads(df_h1.T.to_json()), 'login': json.loads(df_l1.T.to_json())}}
 
         filename = 'EnrichedBrowserHistory20211218.json'
         with open(filename, 'a') as file:

@@ -2,11 +2,11 @@
 import json
 from bran_meta import read_env
 from bran_collector import BranCollector
-#import bran_collector as bc
+import bran_collector as bc
 env = read_env()
 metadata = json.loads(env)
-bc = BranCollector(metadata)
-bc.chrome_export
+cf = BranCollector(metadata).chrome_file()
+#bc.chrome_export
 
 #bc.chrome_file
 # from bd_pre_parser import BdParser
