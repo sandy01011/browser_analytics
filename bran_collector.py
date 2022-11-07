@@ -2,6 +2,7 @@
 # This file will load data to mongodb and will create a file on disk
 
 import os
+import shutil
 import sqlite3
 import json
 from pandas import DataFrame
@@ -39,8 +40,8 @@ class BranCollector:
         self.login = ''
         self.logger.info('bran env loaded')
 
-    def copy_file(file, ops_path):
-        pass
+    def copy_file(self, file):
+        shutil.copy(file, self.gc_ops_path)
   
     def chrome_file(self):
         os.chdir(os.path.expanduser("~"))
@@ -48,7 +49,7 @@ class BranCollector:
         print('Inside chrome_file')
         #cam_files = [cam_file for cam_file in os.listdir(data_source_path)]
         for profile in self.gc_profiles:
-            #copy_file(home_path + profile + '/' + )
+            copy_file(profile + '/' + self.gc_data_hist)
             print(profile)
             print(profile + '/' + self.gc_data_hist)
             print(self.gc_ops_path)
