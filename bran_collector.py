@@ -45,15 +45,21 @@ class BranCollector:
   
     def chrome_file(self):
         os.chdir(os.path.expanduser("~"))
-        home_path = os.getcwd()
+        #home_path = os.getcwd()
         print('Inside chrome_file')
-        #cam_files = [cam_file for cam_file in os.listdir(data_source_path)]
+        # get profile based history and login data to ops folder
         for profile in self.gc_profiles:
-            src_file_path = profile + '/' + self.gc_data_hist
-            dst_file_path = self.gc_ops_path + '/' + self.gc_data_hist+datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            src_hist_path = profile + '/' + self.gc_data_hist
+            dst_hist_path = self.gc_ops_path + '/' + self.gc_data_hist+datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+            shutil.copy(src_hist_path,dst_hist_path)
+            src_login_path = profile + '/' + self.gc_data_login
+            dst_login_path = self.gc_ops_path + '/' + self.gc_data_login+datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+            shutil.copy(src_login_path,dst_login_path)
 
-            shutil.copy(src_file_path,dst_file_path)
-                                    
+        # create list of data files in ops path
+        data_files = [data_file for data_file in os.listdir(self.gc_ops_path)]
+        for file in data_files:
+            print('file',file)                            
         # history1 = sqlite3.connect(history[0])
         # login1 = sqlite3.connect(login[0])
         # h1 = history1.cursor()
