@@ -31,17 +31,20 @@ class BranCollector:
         self.gc_arc_path = self.metadata['user']['data']['gc']['arc_path']
         self.gc_profiles = self.metadata['user']['data']['gc']['profiles']
         self.gc_data_hist = self.metadata['user']['data']['gc']['gc_data'][0]
-        self.gc_data_login = self.metadata['user']['data']['gc']['gc_data'][1]
+        #self.gc_data_login = self.metadata['user']['data']['gc']['gc_data'][1] # optional
         self.logger_name = self.metadata['logger']['loggername']
         self.logger_handler = self.metadata['logger']['loghandler']
         self.logger_file = self.metadata['logger']['logfile']
         self.logger = BotLog(self.logger_file, self.logger_name, self.logger_handler).get_logger()
         self.history = ''
-        self.login = ''
+        #self.login = '' # optional
         self.logger.info('bran env loaded')
 
     def copy_file(self, src_file, dst_file):
         shutil.copy(src_file, dst_file)
+
+    def move_file(self, src_file, dst_file):
+        shutil.move(src_file, dst_file)
   
     def chrome_file(self):
         os.chdir(os.path.expanduser("~"))
@@ -50,16 +53,17 @@ class BranCollector:
         # get profile based history and login data to ops folder
         for profile in self.gc_profiles:
             src_hist_path = profile + '/' + self.gc_data_hist
-            dst_hist_path = self.gc_ops_path + '/' + self.gc_data_hist+datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-            shutil.copy(src_hist_path,dst_hist_path)
-            src_login_path = profile + '/' + self.gc_data_login
-            dst_login_path = self.gc_ops_path + '/' + self.gc_data_login+datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-            shutil.copy(src_login_path,dst_login_path)
+            ops_hist_path = self.gc_ops_path + '/' + self.gc_data_hist+datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+            shutil.copy(src_hist_path,ops_hist_path)
+            # src_login_path = profile + '/' + self.gc_data_login
+            # dst_login_path = self.gc_ops_path + '/' + self.gc_data_login+datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+            # shutil.copy(src_login_path,dst_login_path)
 
         # create list of data files in ops path
         data_files = [data_file for data_file in os.listdir(self.gc_ops_path)]
         for file in data_files:
-            print('file',file)                            
+            print('file',file)
+            shutil.move(ops_hist_path, self.gc_arc_path)                          
         # history1 = sqlite3.connect(history[0])
         # login1 = sqlite3.connect(login[0])
         # h1 = history1.cursor()
@@ -78,8 +82,8 @@ class BranCollector:
         # df_h1 = DataFrame(h1_data,columns=["id", "url", "title", "visit_count", "typed_count", "last_visit_time", "hidden", "visit_time","from_visit", "visit_duration","transition", "source"])
         # df_h1['last_visit_time'] = df_h1['last_visit_time'].apply(lambda x: (datetime.datetime(1601, 1, 1) + datetime.timedelta(microseconds=x)).strftime('%Y-%m-%d %H:%M:%S'))
         # df_h1['visit_time'] = df_h1['visit_time'].apply(lambda x: (datetime.datetime(1601, 1, 1) + datetime.timedelta(microseconds=x)).strftime('%Y-%m-%d %H:%M:%S'))
-        # df_h1_search = DataFrame(h1_search, columns=["keyword_id", "url_id","term", "nterm"])
-        # df_h1_downloads = DataFrame(h1_downloads, columns=["id", "guid","current_path", "target_path","start_time", "received_bytes","total_bytes", "state","danger_type","interupt_reason","hash","end_time","opened", "last_access_time","transient", "referrer","site_url","tab_url", "tab_referrer_url","http_method", "by_ext_id","by_ext_name","etag","last_modified","mime_type", "original_mime_type"])
+        # df_h1_search = DataFrame(h1_search, columns=["search_keyword_id", "search_url_id","search_term", "search_nterm"])
+        # df_h1_downloads = DataFrame(h1_downloads, columns=["dl_id", "dl_guid","dl_current_path", "dl_target_path","dl_start_time", "dl_received_bytes","total_bytes", "state","danger_type","interupt_reason","hash","end_time","opened", "last_access_time","transient", "referrer","site_url","tab_url", "tab_referrer_url","http_method", "by_ext_id","by_ext_name","etag","last_modified","mime_type", "original_mime_type"])
         # df_l1 = DataFrame(l1_data,columns=["username", "element", "origin", "action", "created_on", "last_used"])
         # df_l1['created_on'] = df_l1['created_on'].apply(lambda x: (datetime.datetime(1601, 1, 1) + datetime.timedelta(microseconds=x)).strftime('%Y-%m-%d %H:%M:%S'))
         # df_l1['last_used'] = df_l1['last_used'].apply(lambda x: (datetime.datetime(1601, 1, 1) + datetime.timedelta(microseconds=x)).strftime('%Y-%m-%d %H:%M:%S'))
