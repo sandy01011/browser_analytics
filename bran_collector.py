@@ -45,6 +45,21 @@ class BranCollector:
 
     def move_file(self, src_file, dst_file):
         shutil.move(src_file, dst_file)
+
+
+    def sqlite_connection(self, db_file):
+        """ create a database connection to the SQLite database
+            specified by the db_file
+        :param db_file: database file
+        :return: Connection object or None
+        """
+        conn = None
+        try:
+            conn = sqlite3.connect(db_file)
+        except Exception as e:
+            self.logger.error("load browser data exception occurred:", e)
+        return conn
+    
   
     def chrome_file(self):
         os.chdir(os.path.expanduser("~"))
@@ -62,15 +77,23 @@ class BranCollector:
         # create list of data files in ops path
         data_files = [data_file for data_file in os.listdir(self.gc_ops_path)]
         for file in data_files:
-            print('file',file)                          
-            history1 = sqlite3.connect(file)
+            print('file',file)
+            #history1 = BranCollector.sqlite_connection(file)                         
+            #history1 = sqlite3.connect(file)
+            try:
+                history1 = sqlite3.connect(file)
+            except Exception as e:
+                self.logger.error("load browser data exception occurred:", e)
             #login1 = sqlite3.connect(login[0])
             h1 = history1.cursor()
+            h1.execute("SELECT name FROM sqlite_master WHERE type='table'")
             #l1 = login1.cursor()
             #h1.execute("SELECT visits.visit_time visit_time, visits.from_visit from_visit, visits.visit_duration visit_duration, visits.transition transition, visit_source.source source FROM urls JOIN visits ON urls.id = visits.url LEFT JOIN visit_source ON visits.id = visit_source.id")
             #h1.execute("SELECT urls.id id, urls.url url, urls.title title, urls.visit_count visit_count, urls.typed_count typed_count, urls.last_visit_time last_visit_time, urls.hidden hidden, visits.visit_time visit_time, visits.from_visit from_visit, visits.visit_duration visit_duration, visits.transition transition, visit_source.source source FROM urls JOIN visits ON urls.id = visits.url LEFT JOIN visit_source ON visits.id = visit_source.id")
             #l1.execute("SELECT logins.username_value username, logins.username_element element, logins.origin_url origin,logins.action_url action, logins.date_created created_on, logins.date_last_used last_used from logins")
-            #h1_data = h1.fetchall()
+            h1_data = h1.fetchall()
+            print(h1_data)
+            break
             #l1_data = l1.fetchall() #
             # adding search keywords #
             h1.execute("select * from keyword_search_terms")
