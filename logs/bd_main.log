@@ -186,3 +186,23 @@
                         urls.id = visits.url LEFT JOIN visit_source ON visits.id = visit_source.id executed
 2022-11-10 13:32:21,905 - MainThread:139967595833152 - INFO - bran_main:mongo_loader - load browser data started
 2022-11-10 13:32:24,039 - MainThread:139967595833152 - INFO - bran_main:mongo_loader - data loaded to db
+2022-11-10 14:41:18,215 - MainThread:139976876558144 - INFO - bran_main:mongo_loader - db env loaded
+2022-11-10 14:41:18,216 - MainThread:139976876558144 - INFO - bran_main:bran_collector - bran env loaded
+2022-11-10 14:41:18,818 - MainThread:139976876558144 - INFO - bran_main:bran_collector - file History2022-11-10_14-41-18 extraction started
+2022-11-10 14:41:18,819 - MainThread:139976876558144 - INFO - bran_main:bran_collector - chrome query SELECT urls.id id, urls.url url, urls.title title, urls.visit_count visit_count, 
+                        urls.typed_count typed_count, urls.last_visit_time last_visit_time, urls.hidden hidden, 
+                        visits.visit_time visit_time, visits.from_visit from_visit, visits.visit_duration visit_duration, 
+                        visits.transition transition, visit_source.source source FROM urls JOIN visits ON 
+                        urls.id = visits.url LEFT JOIN visit_source ON visits.id = visit_source.id executed
+2022-11-10 14:41:18,829 - MainThread:139976876558144 - INFO - bran_main:mongo_loader - load browser data started
+2022-11-10 14:41:22,829 - MainThread:139976876558144 - INFO - bran_main:mongo_loader - data loaded to db
+2022-11-10 15:22:08,713 - MainThread:140264984799040 - INFO - bran_main:mongo_loader - db env loaded
+2022-11-10 15:22:08,714 - MainThread:140264984799040 - INFO - bran_main:bran_collector - bran env loaded
+2022-11-10 15:22:08,724 - MainThread:140264984799040 - INFO - bran_main:bran_collector - file History2022-11-10_15-22-08 extraction started
+2022-11-10 15:22:08,725 - MainThread:140264984799040 - INFO - bran_main:bran_collector - chrome query SELECT urls.id id, urls.url url, urls.title title, urls.visit_count visit_count, 
+                        urls.typed_count typed_count, urls.last_visit_time last_visit_time, urls.hidden hidden, 
+                        visits.visit_time visit_time, visits.from_visit from_visit, visits.visit_duration visit_duration, 
+                        visits.transition transition, visit_source.source source FROM urls JOIN visits ON 
+                        urls.id = visits.url LEFT JOIN visit_source ON visits.id = visit_source.id executed
+2022-11-10 15:22:08,737 - MainThread:140264984799040 - INFO - bran_main:mongo_loader - load browser data started
+2022-11-10 15:22:12,418 - MainThread:140264984799040 - INFO - bran_main:mongo_loader - data loaded to db
