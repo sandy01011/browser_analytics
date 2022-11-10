@@ -62,14 +62,21 @@ class BranCollector:
     
   
     def chrome_file(self):
-        os.chdir(os.path.expanduser("~"))
+        
         #home_path = os.getcwd()
         print('Inside chrome_file')
         # get profile based history and login data to ops folder
+        print('#####GC Profiles######',self.gc_profiles)
         for profile in self.gc_profiles:
-            src_hist_path = profile + '/' + self.gc_data_hist
+            os.chdir(os.path.expanduser("~"))
+            os.chdir(profile)
+            #src_hist_path = profile + '/' + self.gc_data_hist
             ops_hist_path = self.gc_ops_path + '/' + self.gc_data_hist+datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-            shutil.copy(src_hist_path,ops_hist_path)
+            try:
+                shutil.copy(self.gc_data_hist,ops_hist_path)
+            except Exception as e:
+                print('&&&&& copy failed',e)
+            print('$$$$$$$$$$$$profile$$$$$$',profile)
             # src_login_path = profile + '/' + self.gc_data_login
             # dst_login_path = self.gc_ops_path + '/' + self.gc_data_login+datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
             # shutil.copy(src_login_path,dst_login_path)
@@ -77,6 +84,7 @@ class BranCollector:
         # create list of data files in ops path
         os.chdir(self.gc_ops_path)
         data_files = [data_file for data_file in os.listdir(self.gc_ops_path)]
+        print('+++++++data files+++++', data_files)
         for file in data_files:
             self.logger.info('file {} extraction started'.format(file))
             # file_exists = os.path.exists(file)
