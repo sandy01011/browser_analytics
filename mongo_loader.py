@@ -40,6 +40,7 @@ class MongoDB(object):
     def insert(collection, data):
         try:
             MongoDB.DATABASE[collection].insert(data, check_keys=False)
+            print('db name', collection)
         except Exception as e:
              print("An exception occurred ::", e)
 
@@ -47,12 +48,12 @@ class MongoDB(object):
     def insertmany(collection, data):
         MongoDB.DATABASE[collection].insert(data)
 
-    @staticmethod
-    def gfs(collection, data):
-        try:
-            return gridfs.GridFS(MongoDB.DATABASE[collection].put(data))
-        except Exception as e:
-             print("An exception occurred ::", e)
+    # @staticmethod
+    # def gfs(collection, data):
+    #     try:
+    #         return gridfs.GridFS(MongoDB.DATABASE[collection].put(data))
+    #     except Exception as e:
+    #          print("An exception occurred ::", e)
 
 
 
@@ -62,6 +63,7 @@ def load_browser_data(data):
     MongoDB.initialize(db)
     try:
         MongoDB.insert(collection=db_collection,data=data)
+        print(db_collection)
         logger.info('data loaded to db')
     except Exception as e:
         logger.error("load browser data exception occurred:", e)

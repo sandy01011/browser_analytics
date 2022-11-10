@@ -5,7 +5,7 @@ from bran_collector import BranCollector
 import bran_collector as bc
 env = read_env()
 metadata = json.loads(env)
-cf = BranCollector(metadata).chrome_file()
+BranCollector(metadata).chrome_file()
 #bc.chrome_export
 
 #bc.chrome_file

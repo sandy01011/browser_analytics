@@ -75,23 +75,12 @@ class BranCollector:
             # shutil.copy(src_login_path,dst_login_path)
 
         # create list of data files in ops path
-        #data_files = [data_file for data_file in os.listdir(self.gc_ops_path)]
-        data_files = ['History2022-11-10_00-34-30']
+        os.chdir(self.gc_ops_path)
+        data_files = [data_file for data_file in os.listdir(self.gc_ops_path)]
         for file in data_files:
-            print('file',file)
-            file_exists = os.path.exists(file)
-            print(file_exists)
-            f = open('History2022-11-10_00-34-30', 'r')
-            lines = f.readlines()
-            count = 0
-            for line in lines:
-                count += 1
-                
-                if count <=10:
-                    print("line",line)
-                else:
-                    break
-
+            self.logger.info('file {} extraction started'.format(file))
+            # file_exists = os.path.exists(file)
+            # print(file_exists)
             # from os import system
             # system("cat History2022-11-10_00-34-30")
             #history1 = BranCollector.sqlite_connection(file)                         
@@ -100,23 +89,21 @@ class BranCollector:
                 history1 = sqlite3.connect(file)
             except Exception as e:
                 self.logger.error("load browser data exception occurred:", e)
-            #login1 = sqlite3.connect(login[0])
             h1 = history1.cursor()
-            sql_query = """SELECT name FROM sqlite_master WHERE type='table';"""
+            #sql_query = """SELECT name FROM sqlite_master WHERE type='table';"""
+            sql_query = """SELECT urls.id id, urls.url url, urls.title title, urls.visit_count visit_count, 
+                        urls.typed_count typed_count, urls.last_visit_time last_visit_time, urls.hidden hidden, 
+                        visits.visit_time visit_time, visits.from_visit from_visit, visits.visit_duration visit_duration, 
+                        visits.transition transition, visit_source.source source FROM urls JOIN visits ON 
+                        urls.id = visits.url LEFT JOIN visit_source ON visits.id = visit_source.id"""
+
             h1.execute(sql_query)
-            
-            rows = h1.fetchall()
-            print('row length',len(rows))
-            # for row in rows:
-            #     print(row)
-            """
+            self.logger.info('chrome query {} executed'.format(sql_query))
             #l1 = login1.cursor()
             #h1.execute("SELECT visits.visit_time visit_time, visits.from_visit from_visit, visits.visit_duration visit_duration, visits.transition transition, visit_source.source source FROM urls JOIN visits ON urls.id = visits.url LEFT JOIN visit_source ON visits.id = visit_source.id")
             #h1.execute("SELECT urls.id id, urls.url url, urls.title title, urls.visit_count visit_count, urls.typed_count typed_count, urls.last_visit_time last_visit_time, urls.hidden hidden, visits.visit_time visit_time, visits.from_visit from_visit, visits.visit_duration visit_duration, visits.transition transition, visit_source.source source FROM urls JOIN visits ON urls.id = visits.url LEFT JOIN visit_source ON visits.id = visit_source.id")
             #l1.execute("SELECT logins.username_value username, logins.username_element element, logins.origin_url origin,logins.action_url action, logins.date_created created_on, logins.date_last_used last_used from logins")
             h1_data = h1.fetchall()
-            print(h1_data)
-            break
             #l1_data = l1.fetchall() #
             # adding search keywords #
             h1.execute("select * from keyword_search_terms")
@@ -139,8 +126,8 @@ class BranCollector:
             browsing_data = {'uid': self.user, 'load_time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'data': {'search': json.loads(df_h1_search.T.to_json()),'history': json.loads(df_h1.T.to_json())}}
             load_browser_data(browsing_data)
             shutil.move(ops_hist_path, self.gc_arc_path)
-            print(browsing_data)
-"""
+            #print(browsing_data)
+
     def chrome_export(self, export_file):
         with open(export_file) as f:
             data = json.loads(f.read())
