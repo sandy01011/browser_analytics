@@ -25,7 +25,7 @@ class MongoDB(object):
     db = metadata['db']['collectiondb']
     db_collection = metadata['db']['collection']
     DATABASE = None
-    
+    print('db name {}, user name {}, password {}, uri {}, collection {}'.format(db,username,password,URI, db_collection))
 
     @staticmethod
     def initialize(db):
@@ -33,8 +33,8 @@ class MongoDB(object):
             client = pymongo.MongoClient(MongoDB.URI)
             MongoDB.DATABASE = client[MongoDB.db]
             MongoDB.DATABASE.authenticate(MongoDB.username, MongoDB.password)
-        except Exception:
-            print("Fatal error in main loop")
+        except Exception as e:
+            print("Fatal error in main loop", e)
 
     @staticmethod
     def insert(collection, data):
@@ -42,11 +42,15 @@ class MongoDB(object):
             MongoDB.DATABASE[collection].insert(data, check_keys=False)
             print('db name', collection)
         except Exception as e:
-             print("An exception occurred ::", e)
+             print("An exception occurred during insert:", e)
 
     @staticmethod
     def insertmany(collection, data):
-        MongoDB.DATABASE[collection].insert(data)
+        try:
+            MongoDB.DATABASE[collection].insert_many(data)
+        except Exception as e:
+             print("An exception occurred during insertmany :", e)
+
 
     # @staticmethod
     # def gfs(collection, data):

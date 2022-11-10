@@ -124,7 +124,7 @@ class BranCollector:
             #l1.close()
             #browsing_data = {'uid': self.user, 'load_time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'data': {'search': json.loads(df_h1_search.T.to_json()),'history': json.loads(df_h1.T.to_json()),'login': json.loads(df_l1.T.to_json()), 'downloads': json.loads(df_h1_downloads.T.to_json())}}
             browsing_data = {'uid': self.user, 'load_time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'data': {'search': json.loads(df_h1_search.T.to_json()),'history': json.loads(df_h1.T.to_json())}}
-            load_browser_data(browsing_data)
+            load_browser_data([browsing_data])
             shutil.move(ops_hist_path, self.gc_arc_path)
             #print(browsing_data)
 
