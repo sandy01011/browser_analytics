@@ -62,13 +62,12 @@ class BranCollector:
     
   
     def chrome_file(self):
-        
-        #home_path = os.getcwd()
+        os.chdir(os.path.expanduser("~"))
+        print(os.getcwd())
         print('Inside chrome_file')
         # get profile based history and login data to ops folder
         print('#####GC Profiles######',self.gc_profiles)
         for profile in self.gc_profiles:
-            os.chdir(os.path.expanduser("~"))
             os.chdir(profile)
             #src_hist_path = profile + '/' + self.gc_data_hist
             ops_hist_path = self.gc_ops_path + '/' + self.gc_data_hist+datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
@@ -77,6 +76,7 @@ class BranCollector:
             except Exception as e:
                 print('&&&&& copy failed',e)
             print('$$$$$$$$$$$$profile$$$$$$',profile)
+            os.chdir(os.path.expanduser("~"))
             # src_login_path = profile + '/' + self.gc_data_login
             # dst_login_path = self.gc_ops_path + '/' + self.gc_data_login+datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
             # shutil.copy(src_login_path,dst_login_path)
