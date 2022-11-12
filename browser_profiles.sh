@@ -6,11 +6,3 @@ date=$(date +"%m%d%y")
 cp $pro_def_src/Default/History $pro_dst_path/'PDHistory_'$date
 cp $pro_def_src/Profile\ 1/History $pro_dst_path/'P1History_'$date
 cp $pro_def_src/Profile\ 2/History $pro_dst_path/'P2History_'$date
-# path_src=./folder1
-# path_dst=./folder2
-# date=$(date +"%m%d%y")
-# for file_src in $path_src/*; do
-#   file_dst="$path_dst/$(basename $file_src | \
-#     sed "s/^\(.*\)\.\(.*\)/\1$date.\2/")"
-#   echo mv "$file_src" "$file_dst"
-# done
