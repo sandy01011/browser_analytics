@@ -84,7 +84,10 @@ class BranCollector:
             df_h1['visit_time'] = df_h1['visit_time'].apply(lambda x: (datetime.datetime(1601, 1, 1) + datetime.timedelta(microseconds=x)).strftime('%Y-%m-%d %H:%M:%S'))
             df_h1_search = DataFrame(h1_search, columns=["search_keyword_id", "search_url_id","search_term", "search_nterm"])
             h1.close()
-            browsing_data = {'uid': self.user, 'load_time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'data': {'search': json.loads(df_h1_search.T.to_json()),'history': json.loads(df_h1.T.to_json())}}
+            browsing_data = {'uid': self.user, 'layer':0, 'engine':'collector',
+                             'load_time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                             'data': {'search': json.loads(df_h1_search.T.to_json()),
+                                      'history': json.loads(df_h1.T.to_json())}}
             load_browser_data([browsing_data])
             shutil.move(file, self.gc_arc_path)
             filename = file + '.json'
