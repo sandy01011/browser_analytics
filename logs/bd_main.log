@@ -595,3 +595,15 @@
 2022-11-14 22:28:14,176 - MainThread:140251872040768 - INFO - bran_main:mongo_loader - data loaded to db
 2022-11-14 23:06:49,333 - MainThread:140430151534400 - INFO - bran_main:mongo_loader - db env loaded
 2022-11-14 23:06:49,334 - MainThread:140430151534400 - INFO - bran_main:mongo_loader - reading browser data from db
+2022-11-14 23:18:44,930 - MainThread:139920494114624 - INFO - bran_main:mongo_loader - db env loaded
+2022-11-14 23:18:44,931 - MainThread:139920494114624 - INFO - bran_main:mongo_loader - reading browser data from db
+2022-11-14 23:19:29,019 - MainThread:139870295201600 - INFO - bran_main:mongo_loader - db env loaded
+2022-11-14 23:19:29,019 - MainThread:139870295201600 - INFO - bran_main:mongo_loader - reading browser data from db
+2022-11-14 23:20:24,794 - MainThread:139653707708224 - INFO - bran_main:mongo_loader - db env loaded
+2022-11-14 23:20:24,794 - MainThread:139653707708224 - INFO - bran_main:mongo_loader - reading browser data from db
+2022-11-14 23:21:13,919 - MainThread:140636013672256 - INFO - bran_main:mongo_loader - db env loaded
+2022-11-14 23:21:13,920 - MainThread:140636013672256 - INFO - bran_main:mongo_loader - reading browser data from db
+2022-11-14 23:23:46,908 - MainThread:140130251327296 - INFO - bran_main:mongo_loader - db env loaded
+2022-11-14 23:23:46,908 - MainThread:140130251327296 - INFO - bran_main:mongo_loader - reading browser data from db
+2022-11-14 23:26:38,584 - MainThread:139652643714880 - INFO - bran_main:mongo_loader - db env loaded
+2022-11-14 23:26:38,584 - MainThread:139652643714880 - INFO - bran_main:mongo_loader - reading browser data from db

@@ -33,6 +33,7 @@ class MongoDB(object):
             client = pymongo.MongoClient(MongoDB.URI)
             MongoDB.DATABASE = client[MongoDB.db]
             MongoDB.DATABASE.authenticate(MongoDB.username, MongoDB.password)
+            print('MongoDB initialised')
         except Exception as e:
             print("Fatal error in main loop", e)
 
@@ -77,7 +78,7 @@ def read_browser_data():
     logger.info('reading browser data from db')
     MongoDB.initialize(db)
     try:
-        collection_list_0 = db_collection.find({'layer': 0})
+        collection_list_0 = db_collection.find({})
     except Exception as e:
         logger.error("read browser data exception occurred:", e)
         print('read error occured')
