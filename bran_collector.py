@@ -6,7 +6,6 @@ import shutil
 import sqlite3
 import json
 from pandas import DataFrame
-
 from mongo_loader import load_browser_data
 import datetime
 from applogger import BotLog

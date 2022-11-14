@@ -593,3 +593,5 @@
                         urls.id = visits.url LEFT JOIN visit_source ON visits.id = visit_source.id executed
 2022-11-14 22:28:12,286 - MainThread:140251872040768 - INFO - bran_main:mongo_loader - load browser data started
 2022-11-14 22:28:14,176 - MainThread:140251872040768 - INFO - bran_main:mongo_loader - data loaded to db
+2022-11-14 23:06:49,333 - MainThread:140430151534400 - INFO - bran_main:mongo_loader - db env loaded
+2022-11-14 23:06:49,334 - MainThread:140430151534400 - INFO - bran_main:mongo_loader - reading browser data from db
