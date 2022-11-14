@@ -73,4 +73,17 @@ def load_browser_data(data):
         logger.error("load browser data exception occurred:", e)
         print('load_bot_meta_to_db error occured')
 
+def read_browser_data():
+    logger.info('reading browser data from db')
+    MongoDB.initialize(db)
+    try:
+        collection_list_0 = db_collection.find({'layer': 0})
+    except Exception as e:
+        logger.error("read browser data exception occurred:", e)
+        print('read error occured')
+    collection_list = [data for data in collection_list_0]
+    return collection_list
 
+def update_layer(collection_list, layer_no):
+    for item in collection_list:
+        db_collection.update_one({"_id":item['_id']},{"$set":{"layer":layer_no}})
