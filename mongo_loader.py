@@ -76,7 +76,9 @@ def load_browser_data(data):
 
 def read_browser_data():
     logger.info('reading browser data from db')
+    print('database used as db',db)
     MongoDB.initialize(db)
+    print('db used as db_collection', db_collection)
     try:
         collection_list_0 = db_collection.find({})
     except Exception as e:
