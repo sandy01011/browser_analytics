@@ -5,7 +5,7 @@ from bran_meta import read_env
 import json
 
 metadata = json.loads(read_env())
-db = metadata['db']['collectiondb']
+db_col = metadata['db']['collectiondb']
 db_collection = metadata['db']['collection']
 
 
@@ -17,13 +17,13 @@ URI = metadata['db']['uri']
 # db_col_par = metadata[4]['ppONbids']
 # db_col_col = metadata[4]['rawONbids']
 client = pymongo.MongoClient(URI)
-db = client[db]
+db = client[db_col]
 db.authenticate(username, password)
-# collection = db[db_col_col]
+collection = db[db_collection]
 # parsing = db[db_col_par]
-collection_list_0 = db_collection.find({'layer':'0'})
+collection_list_0 = collection.find({'layer':0})
 collection_list = [data for data in collection_list_0]
-print(collection_list)
+print(len(collection_list))
 
 
 # read data
