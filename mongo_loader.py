@@ -80,7 +80,7 @@ def read_browser_data():
     MongoDB.initialize(db)
     print('db used as db_collection', db_collection)
     try:
-        collection_list_0 = db_collection.find({})
+        collection_list_0 = db_collection.find({'layer': 0})
     except Exception as e:
         logger.error("read browser data exception occurred:", e)
         print('read error occured')

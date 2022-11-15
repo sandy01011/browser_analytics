@@ -609,3 +609,7 @@
 2022-11-14 23:26:38,584 - MainThread:139652643714880 - INFO - bran_main:mongo_loader - reading browser data from db
 2022-11-15 12:36:23,079 - MainThread:140617034295104 - INFO - bran_main:mongo_loader - db env loaded
 2022-11-15 12:36:23,112 - MainThread:140617034295104 - INFO - bran_main:mongo_loader - reading browser data from db
+2022-11-15 12:52:09,438 - MainThread:139693419697984 - INFO - bran_main:mongo_loader - db env loaded
+2022-11-15 12:52:09,439 - MainThread:139693419697984 - INFO - bran_main:mongo_loader - reading browser data from db
+2022-11-15 12:53:08,564 - MainThread:140319261869888 - INFO - bran_main:mongo_loader - db env loaded
+2022-11-15 12:53:08,564 - MainThread:140319261869888 - INFO - bran_main:mongo_loader - reading browser data from db
