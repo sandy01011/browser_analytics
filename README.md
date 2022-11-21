@@ -75,6 +75,9 @@ Chrome Website Visits are stored in the 'History' SQLite database, within the 'v
 
 ![image](https://user-images.githubusercontent.com/25777689/199246603-8763e0da-26a8-4b94-b420-32821aa6fa8c.png)
 
+##GC Collector
+## 
+
 
 
 
