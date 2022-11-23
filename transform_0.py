@@ -4,6 +4,39 @@ from bran_meta import read_env
 #from mongo_loader import read_browser_data, update_layer
 import json
 
+
+def read_gc_data():
+    pass
+
+def read_ge_data():
+    pass
+
+def clean_gc_0():
+    pass
+
+def clean_ge_0():
+    pass
+
+def time_series_df():
+    pass
+
+def agg_time_series():
+    pass
+
+def compose_0():
+    # extra columns in data frame based on URL presentation type, scrape dictionary
+    # inclusion or exclusion of urls, layer update etc.
+    pass
+
+def save_eda0_plot():
+    pass
+
+def write_transform_0():
+    pass
+
+
+
+
 metadata = json.loads(read_env())
 db_col = metadata['db']['collectiondb']
 db_collection = metadata['db']['collection']
