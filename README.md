@@ -77,9 +77,9 @@ Chrome Website Visits are stored in the 'History' SQLite database, within the 'v
 
 ###branCollector
 To collect google chrome export (gc) or google history from google console export (ge) and insert it into mongodb.
-###enrichment_0
+###enrichment_0, kafka container
 To clean, featurise data and insert it into mongodb
-###URLScraper
+###URLScraper, kafka container
 To scrape URL and enrich data
 
 
